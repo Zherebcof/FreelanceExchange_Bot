@@ -1,0 +1,12 @@
+
+services:
+  bot:
+    build: .
+    container_name: freelance_bot
+    restart: always
+    # Пробрасываем файл базы данных, чтобы данные не стерлись при перезапуске
+    volumes:
+      - ./freelance.db:/app/freelance.db
+    # Указываем, где лежат наши секретные токены
+    env_file:
+      - .env
